@@ -1,0 +1,488 @@
+﻿@model Single_Page_Task.Models.IndexView;
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .custom-card {
+            background-color: #f8f9fa; /* Example background color */
+            padding: 1rem;
+        }
+
+       
+        .separator {
+            border-bottom: 1px solid #dee2e6;
+            margin: 0rem 0;
+        }
+
+        .color {
+              color:red;
+        }
+
+
+
+        .btn-lg {
+            font-size: 1.25rem; /* Larger text */
+            padding: 0.5rem 1rem; /* Larger padding */
+        }
+
+            .btn-lg i {
+                font-size: 1.5rem; /* Larger icon */
+            }
+    </style>
+</head>
+<body  >
+    <section class="content-header m-2 shadow-lg p-3 bg-white left">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class=" custom-card">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">Meeting Minutes</h6>
+                            <i class="fas fa-edit"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Second Card with Form -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <input type="radio" id="option1" name="options" value="Corporate">
+                                <label for="option1">Corporate</label>
+                                <input type="radio" id="option2" name="options" value="Individual" class="ml-3">
+                                <label for="option2">Individual</label>
+                            </div>
+                            </div>
+                            <form id="productfrom">
+
+                                <div class="separator"></div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="input1">Customer Name<span class="color" >*</span></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <select asp-for="@Model.MeetingMinutesMaster.CustomerName" class="form-control" id="input1" >
+                                                              
+                                                        </select>
+                                                    </div> 
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                  <label for="input1">Date<span class="color">*</span></label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                  <input type="date" asp-for="@Model.MeetingMinutesMaster.DateTime"   />
+                                                </div>
+                                                <div class="col-md-1 ">
+                                                  <label for="input1">Time</label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="time" id="input11"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                 <label for="input1">Meeting Place<span class="color">*</span></label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                @* <input class="form-control" type="text" asp-for="@Model.MeetingMinutesMaster.MeetingPlace" name="Model.MeetingMinutesMaster.MeetingPlace" /> *@
+                                                <input class="form-control" type="text" asp-for="@Model.MeetingMinutesMaster.MeetingPlace" id="input2"  />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                  <label for="input1">Attends From Client Side<span class="color">*</span></label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                  <textarea class="form-control" asp-for="@Model.MeetingMinutesMaster.AttendsFromClientSide" id="input3" ></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                   <label for="input1">Attends From Home Side<span class="color">*</span></label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <textarea asp-for="@Model.MeetingMinutesMaster.AttendsFromHomeSide" class="form-control" id="input4" ></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="input1">Meeting Agenda<span class="color">*</span></label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                 <textarea class="form-control" asp-for="@Model.MeetingMinutesMaster.MeetingAgenda" id="input5"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="input1">Meeting Discussion<span class="color">*</span></label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                <textarea class="form-control" asp-for="@Model.MeetingMinutesMaster.MeetingDiscussion" id="input6"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="input1">Meeting Disicion<span class="color">*</span></label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <textarea class="form-control" asp-for="@Model.MeetingMinutesMaster.MeetingDiscision" id="input7" ></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+   
+    </section>
+    <section class="content-header m-2 shadow-lg p-3 bg-white left">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mt-3">
+                            <div class="col-md-7">
+                                <form id="productForm">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="input1">Instated Product/Service</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select class="form-control" id="productName">
+                                                    <option value="" disabled selected>select product/services inserted</option>
+                                                     @foreach(var item in @Model.productserviceName)
+                                                    {
+                                                        <option value="@item.ProductName" >@item.ProductName</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="input1">Quality</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input class="form-control" type="number" id="quantity" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="input1">Unit</label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input class="form-control" type="number" id="unit" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row mt-3">
+
+                                        <button type="button" class="btn bg-secondary btn-sm" id="addBtn">
+                                           
+                                                <i class="fas fa-plus"></i> Add
+                                        </button>
+                                        
+                                    </div>
+
+
+                                    <input type="hidden" id="meetingMinutesDetails" name="MeetingMinutesDetailsJson" />
+
+
+                                </form>
+                               
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section class="content-header m-2 shadow-lg p-3 bg-white left">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        
+                            
+                        <table class="table table-bordered" id="productTable">
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%">
+                                        #SL
+
+                                    </th>
+                                    <th style="width: 35%">
+                                        Instated Product/Service Name
+                                    </th>
+                                    <th style="width: 25%">
+                                        Quantity
+                                    </th>
+                                    <th style="width: 25%">
+                                        Unit
+                                    </th>
+                                    <th style="width: 3%">
+                                        Edit
+                                    </th>
+                                    <th style="width: 7%">
+                                        Delete
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="noData">
+                                    <td colspan="6" class="text-center">No matching records found</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <div class="row mt-5 ml-2 mb-5">
+
+        <button type="button" class="btn bg-secondary btn-sm" id="saveBtn">
+            <i class="fas fa-save"></i> Save
+            
+        </button>
+        <button type="button" class="btn bg-secondary btn-sm ml-1" id="refreshBtn">
+            <i class="fas fa-sync"></i> Refresh
+        </button>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Define the customers
+            const individualCustomers = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.IndividualCustomer));
+            const corporateCustomers = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.CorporateCustomer));
+
+
+            function populateSelect(customers) {
+                let select = $('#input1');
+                select.empty();
+                select.append('<option value="" disabled selected>Select customer name</option>');
+                
+                customers.forEach(function (customer) {
+                    select.append('<option value="' + (customer.CorporateCustomerName ? customer.CorporateCustomerName : customer.Individual_CustomerName) + '">'
+                        + (customer.CorporateCustomerName ? customer.CorporateCustomerName : customer.Individual_CustomerName) + '</option>');
+
+                });
+            }
+
+          
+            populateSelect(individualCustomers);
+
+            $('input[name="options"]').change(function () {
+                let selectedOption = $('input[name="options"]:checked').val();
+                
+                if (selectedOption === 'Corporate') {
+                    populateSelect(corporateCustomers);
+                } else if (selectedOption === 'Individual') {
+                    populateSelect(individualCustomers);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            let rowCount = 1;
+            let editRow = null;
+
+            $('#addBtn').click(function () {
+                let productName = $('#productName').val();
+                let quantity = $('#quantity').val();
+                let unit = $('#unit').val();
+
+                if (productName && quantity && unit) {
+                    $('#noData').hide();
+
+                    if (editRow) {
+                        $(editRow).find('td:eq(1)').text(productName);
+                        $(editRow).find('td:eq(2)').text(quantity);
+                        $(editRow).find('td:eq(3)').text(unit);
+                        editRow = null;
+                    } else {
+                        let newRow = `
+                                    <tr>
+                                        <td>${rowCount}</td>
+                                        <td>${productName}</td>
+                                        <td>${quantity}</td>
+                                        <td>${unit}</td>
+                                        <td><button type="button" class="btn btn-sm editBtn"><i class="fas fa-edit"></i></button></td>
+                                        <td><button type="button" class="btn btn-sm deleteBtn"><i class="fas fa-trash"></i></button></td>
+                                    </tr>
+                                `;
+
+                        $('#productTable tbody').append(newRow);
+                        rowCount++;
+                    }
+
+                    $('#productName').val('');
+                    $('#quantity').val('');
+                    $('#unit').val('');
+                } else {
+                    alert('Please fill out all fields');
+                }
+            });
+
+            $(document).on('click', '.editBtn', function () {
+                editRow = $(this).closest('tr');
+                let productName = $(editRow).find('td:eq(1)').text();
+                let quantity = $(editRow).find('td:eq(2)').text();
+                let unit = $(editRow).find('td:eq(3)').text();
+
+                $('#productName').val(productName);
+                $('#quantity').val(quantity);
+                $('#unit').val(unit);
+            });
+
+            $(document).on('click', '.deleteBtn', function () {
+                $(this).closest('tr').remove();
+                if ($('#productTable tbody tr').length == 1) {
+                    $('#noData').show();
+                }
+            });
+
+            $('#saveBtn').click(function (e) {
+                e.preventDefault(); // Prevent default form submission
+
+                let tableData = [];
+
+                $('#productTable tbody tr').each(function (index, tr) {
+                    if ($(tr).attr('id') !== 'noData') {
+                        let row = {
+                            Service: $(tr).find('td:eq(1)').text(),
+                            Quantity: $(tr).find('td:eq(2)').text(),
+                            Unit: $(tr).find('td:eq(3)').text()
+                        };
+                        tableData.push(row);
+                    }
+                });
+
+                let date = $('input[type="date"]').val();
+                let time = $('#input11').val();
+                let dateTime = new Date(date + 'T' + time).toISOString();
+
+                let formData = {
+                    MeetingMinutesMaster: {
+                        CustomerName: $('#input1').val(),
+                        DateTime: dateTime,
+                        Time: time,
+                        MeetingPlace: $('#input2').val(),
+                        AttendsFromClientSide: $('#input3').val(),
+                        AttendsFromHomeSide: $('#input4').val(),
+                        MeetingAgenda: $('#input5').val(),
+                        MeetingDiscussion: $('#input6').val(),
+                        MeetingDiscision: $('#input7').val()
+                    },
+                    MeetingMinutesDetails: tableData
+                };
+
+                $.ajax({
+                    url: '/Home/Save',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function (response) {
+                        $('#productfrom')[0].reset(); // Reset form fields
+
+                        // Clear the table data
+                        $('#productTable tbody').empty();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error:', error);
+                        console.error('Status:', status);
+                        console.error('Response:', xhr.responseText);
+                        alert('Error saving data');
+                    }
+                });
+            });
+
+
+
+            if ($('#productTable tbody tr').length == 1) {
+                $('#noData').show();
+            } else {
+                $('#noData').hide();
+            }
+        });
+    </script>
+    <script>
+        $('#refreshBtn').click(function () {
+            // Reset the form fields
+            $('#productfrom')[0].reset(); // This resets the form inputs to their default values
+
+            // Clear the table data
+            $('#productTable tbody').empty(); // This removes all rows from the table body
+        });
+
+    </script>
+</body>
+</html>
+
+
